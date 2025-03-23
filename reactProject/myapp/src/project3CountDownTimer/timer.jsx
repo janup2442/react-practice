@@ -17,7 +17,6 @@ export default function Timer(){
     });
     const onChangeTime = (time)=>{
         setTime(time);
-        setMode(!mode);
     }
     return(
         <>
@@ -26,7 +25,7 @@ export default function Timer(){
                     <h3>Timer</h3>
                 </div>
                 {
-                    mode?<SettingModeTimer setTime={onChangeTime}/>:<RunningModeTimer currentTime={time} ChangeMode={changeMode}/>
+                    mode?<SettingModeTimer setTime={onChangeTime} changeMode={changeMode}/>:<RunningModeTimer initialTime={time} changeMode={changeMode}/>
                 }
                 
             </div>

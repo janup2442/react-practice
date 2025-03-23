@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function SettingModeTimer({setTime}){
+export default function SettingModeTimer({setTime,changeMode}){
     const [time ,updateTime] = useState({
         hour:0,
         minute:0,
@@ -12,6 +12,17 @@ export default function SettingModeTimer({setTime}){
             ...time,
             [e.target.name]:e.target.value
         })
+        console.log(time);
+        
+       
+    }
+    const handleStart = ()=>{
+        if(time.hour === 0 && time.minute === 0 && time.second === 0){
+            alert("Please set the time to start the timer");
+        }else{
+            setTime(time);
+            changeMode(0);
+        }
     }
     return(
         <>
@@ -21,7 +32,7 @@ export default function SettingModeTimer({setTime}){
                     <input onChange={(e)=>onChangeTime(e)} type="number" name="minute" min={0} max={59}/>
                     <input onChange={(e)=>onChangeTime(e)} type="number" name="second" min={0} max={59}/>
                 </form>
-                <button onClick={()=>setTime(time)}>Start Timer</button>
+                <button onClick={()=>handleStart()}>Start Timer</button>
             </div>
         </>
     )
