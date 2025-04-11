@@ -10,7 +10,7 @@ export default function SettingModeTimer({setTime,changeMode}){
     const onChangeTime = (e)=>{
         updateTime({
             ...time,
-            [e.target.name]:e.target.value
+            [e.target.name]:Number(e.target.value)
         })
         console.log(time);
         
